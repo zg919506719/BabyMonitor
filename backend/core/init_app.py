@@ -1,10 +1,13 @@
 import shutil
 
 from aerich import Command
+from fastapi import FastAPI, HTTPException
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
+from tortoise.exceptions import DoesNotExist
 
 from backend.controls.admin_control import admin_control
+from backend.core.exceptions import exception_404_handler, exception_custom_handler
 from backend.log import logger
 from backend.schemas.admins import AdminCreate
 from backend.settings.config import SETTINGS
@@ -62,3 +65,9 @@ async def init_data():
     await init_db()
     # 创建一个超级管理员
     await init_super_user()
+
+
+def register_exceptions(app: FastAPI):
+    app.add_exception_handler(DoesNotExist, exception_404_handler)
+    #自定义
+    app.add_exception_handler(HTTPException, exception_custom_handler)
