@@ -3,8 +3,10 @@ from contextlib import asynccontextmanager
 from fastapi import FastAPI
 
 from backend.core.init_app import create_middleware, init_data
-from backend.settings.config import SETTINGS
 from tortoise import Tortoise
+
+from backend.settings.config import SETTINGS
+
 
 @asynccontextmanager
 async def lifespan(app: FastAPI):

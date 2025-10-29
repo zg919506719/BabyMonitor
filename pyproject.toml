@@ -1,0 +1,37 @@
+[project]
+name = "backend"
+version = "0.1.0"
+description = "An APP is used to monitor baby"
+authors = [
+    { name = "Galen", email = "galen@cashcepat.id" }
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    # Uvicorn：底层运行引擎（服务器）
+    # Starlette：基础 Web 框架（提供路由、请求处理等核心功能）
+    # Pydantic：数据验证工具（负责数据校验和类型处理）
+    # FastAPI：上层 API 框架（整合前三者，专注 API 开发）
+    "fastapi",
+    # 服务器启动 Uvicorn 是一个基于 uvloop 和 httptools 实现的高性能 ASGI 服务器，可以实现异步处理 HTTP 请求。
+    "uvicorn",
+    # Starlette 是一个轻量级、高性能的异步 Web 框架
+    "starlette",
+    # Pydantic 是一个基于 Python 类型提示（type hints）的数据验证和设置管理库
+    "pydantic",
+    #my sql
+    "tortoise-orm",
+    # 数据库迁移工具
+    "aerich",
+    # 日志管理
+    "loguru",
+    #密码hash
+    "passlib",
+    #加密算法
+    "argon2-cffi (>=25.1.0,<26.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"

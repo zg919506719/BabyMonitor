@@ -4,7 +4,9 @@ from aerich import Command
 from starlette.middleware import Middleware
 from starlette.middleware.cors import CORSMiddleware
 
+from backend.controls.admin_control import admin_control
 from backend.log import logger
+from backend.schemas.admins import AdminCreate
 from backend.settings.config import SETTINGS
 
 
@@ -45,10 +47,18 @@ async def init_db():
 
 
 async def init_super_user():
-    pass
+    admin = await admin_control.model.exists()
+    if not admin:
+        await admin_control.create_admin(AdminCreate(
+            username="admin",
+            password="admin",
+            email="admin@admin.com",
+            is_superuser=True,
+        ))
 
 
 async def init_data():
     # 数据库初始化相关
     await init_db()
+    # 创建一个超级管理员
     await init_super_user()

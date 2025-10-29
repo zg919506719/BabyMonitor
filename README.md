@@ -47,5 +47,15 @@ uv pip install "fastapi[standard]"
 http://127.0.0.1:8000/openapi.json
 ```
 
+# poetry
+```
+uv pip install poetry
+
+为现有项目初始化
+poetry init
+poetry lock
+poetry install
+```
+
 
 

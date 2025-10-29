@@ -3,10 +3,12 @@ from datetime import datetime
 
 from tortoise import models, fields
 
-from backend import SETTINGS
+from backend.settings.config import SETTINGS
 
 
-class BaseModel(models.Model):
+
+#自定义model 防止和post里面的model重合
+class CustomBaseModel(models.Model):
     # id自增长
     id = fields.BigIntField(pk=True, index=True)
 

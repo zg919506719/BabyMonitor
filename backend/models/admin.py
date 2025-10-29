@@ -1,9 +1,9 @@
 from tortoise import fields
 
-from backend.models.base import BaseModel, TimestampMixin
+from backend.models.base import CustomBaseModel, TimestampMixin
 
 
-class Admin(BaseModel, TimestampMixin):
+class Admin(CustomBaseModel, TimestampMixin):
     username = fields.CharField(max_length=20, unique=True, description="用户名称", index=True)
     alias = fields.CharField(max_length=30, null=True, description="姓名", index=True)
     email = fields.CharField(max_length=255, unique=True, description="邮箱", index=True)
@@ -18,7 +18,7 @@ class Admin(BaseModel, TimestampMixin):
         table = "admin"
 
 
-class Role(BaseModel, TimestampMixin):
+class Role(CustomBaseModel, TimestampMixin):
     name = fields.CharField(max_length=20, unique=True, description="角色名称", index=True)
     desc = fields.CharField(max_length=500, null=True, description="角色描述")
 
