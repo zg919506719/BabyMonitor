@@ -21,7 +21,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: backend
-    restart: unless-stopped
+#    restart: unless-stopped
     #使用env配置
     env_file:
       - .env
@@ -36,7 +36,9 @@ services:
     volumes:
       - .:/backend  # 代码实时同步
     ports:
-      - "8000:8000"
+      - "80:8000"
+      # 先启动再进入改
+#    command: sleep infinity
 
 volumes:
   db_data:

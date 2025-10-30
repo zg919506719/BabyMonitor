@@ -20,13 +20,10 @@ class Settings(BaseSettings):
                 "credentials": {
                     "host": os.getenv("MYSQL_HOST"),  # Database host address
                     "port": 3306,  # Database port
-                    "user": "admin",  # Database username
-                    "password": "admin",  # Database password
-                    "database": "baby_monitor",
-
-                    # "user": os.getenv("MYSQL_USER"),  # Database username
-                    # "password": os.getenv("MYSQL_PASSWORD"),  # Database password
-                    # "database": os.getenv("MYSQL_DATABASE"),  # Database name
+                    # 注意空格
+                    "user": os.getenv("MYSQL_USER").strip(),  # Database username
+                    "password": os.getenv("MYSQL_PASSWORD").strip(),  # Database password
+                    "database": os.getenv("MYSQL_DATABASE").strip(),  # Database name
                 },
             },
         },
