@@ -1,0 +1,10 @@
+fastapi
+loguru
+pydantic
+tortoise-orm
+aerich
+starlette
+passlib
+uvicorn
+aiomysql
+argon2-cffi

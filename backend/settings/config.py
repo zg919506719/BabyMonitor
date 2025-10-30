@@ -1,3 +1,5 @@
+import os
+
 from pydantic.v1 import BaseSettings
 
 
@@ -16,11 +18,15 @@ class Settings(BaseSettings):
             "mysql": {
                 "engine": "tortoise.backends.mysql",
                 "credentials": {
-                    "host": "localhost",  # Database host address
+                    "host": os.getenv("MYSQL_HOST"),  # Database host address
                     "port": 3306,  # Database port
-                    "user": "root",  # Database username
+                    "user": "admin",  # Database username
                     "password": "admin",  # Database password
-                    "database": "baby_monitor",  # Database name
+                    "database": "baby_monitor",
+
+                    # "user": os.getenv("MYSQL_USER"),  # Database username
+                    # "password": os.getenv("MYSQL_PASSWORD"),  # Database password
+                    # "database": os.getenv("MYSQL_DATABASE"),  # Database name
                 },
             },
         },

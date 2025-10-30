@@ -1,7 +1,7 @@
 from datetime import datetime
 from typing import Optional, List
 
-from pydantic import BaseModel, Field, EmailStr
+from pydantic import BaseModel, Field
 
 
 # post model
@@ -30,7 +30,7 @@ class AdminCreate(BaseModel):
         pattern=r"^[a-zA-Z0-9]+$",  # 只允许字母、数字、下划线
         description="密码至少8位，包含大小写字母和数字"
     )
-    email: EmailStr = Field(examples=["admin@qq.com"])
+    email: str = Field(examples=["admin@qq.com"])
     is_active: Optional[bool] = True
     is_superuser: Optional[bool] = False
 

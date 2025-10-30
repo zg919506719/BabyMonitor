@@ -57,5 +57,17 @@ poetry lock
 poetry install
 ```
 
+# docker
+```
+# 启动服务
+docker-compose up
+
+# 或者后台运行
+docker-compose up -d
+
+# 更新代码后重启
+docker-compose restart
+```
+
 
 

@@ -6,7 +6,7 @@ authors = [
     { name = "Galen", email = "galen@cashcepat.id" }
 ]
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.11"
 dependencies = [
     # Uvicorn：底层运行引擎（服务器）
     # Starlette：基础 Web 框架（提供路由、请求处理等核心功能）
@@ -28,7 +28,9 @@ dependencies = [
     #密码hash
     "passlib",
     #加密算法
-    "argon2-cffi (>=25.1.0,<26.0.0)"
+    "argon2-cffi (>=25.1.0,<26.0.0)",
+    "redis (>=7.0.1,<8.0.0)",
+    "aioredis (>=2.0.1,<3.0.0)"
 ]
 
 
