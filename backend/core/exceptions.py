@@ -6,6 +6,8 @@ from fastapi.requests import Request
 from starlette.responses import JSONResponse
 from tortoise.exceptions import DoesNotExist
 
+from backend.log import logger
+
 
 async def exception_404_handler(req: Request, exc: DoesNotExist) -> JSONResponse:
     content = dict(
@@ -24,7 +26,9 @@ async def exception_custom_handler(_: Request, exc: HTTPException) -> JSONRespon
     )
     return JSONResponse(content, status_code=500)
 
+
 async def exception_system_handler(_: Request, exc: Exception) -> JSONResponse:
+    logger.warning(str(exc))
     content = dict(
         code=500,
         msg="系统错误",
