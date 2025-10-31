@@ -38,5 +38,11 @@ class Settings(BaseSettings):
     }
     # 数据库转化时间格式
     DATETIME_FORMAT: str = "%Y-%m-%d %H:%M:%S"
+    # TOKEN 过期时间
+    ACCESS_TOKEN_EXPIRE_DAYS = 7
+    # jwt私钥
+    SECRET_KEY: str = "3488a63e1765035d386f05409663f55c83bfae3b3c61a932744b20ad14244dcf"  # openssl rand -hex 32
+    JWT_ALGORITHM: str = "HS256"
+
 
 SETTINGS = Settings()

@@ -33,6 +33,8 @@ services:
       - MYSQL_PASSWORD= ${MYSQL_PASSWORD}
     depends_on:
       - db
+    #在容器运行时挂载，覆盖镜像中的文件
+    # 生产环境（不需要 volumes）
     volumes:
       - .:/backend  # 代码实时同步
     ports:

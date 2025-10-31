@@ -7,7 +7,7 @@ from starlette.middleware.cors import CORSMiddleware
 from tortoise.exceptions import DoesNotExist
 
 from backend.controls.admin_control import admin_control
-from backend.core.exceptions import exception_404_handler, exception_custom_handler
+from backend.core.exceptions import exception_404_handler, exception_custom_handler, exception_system_handler
 from backend.log import logger
 from backend.schemas.admins import AdminCreate
 from backend.settings.config import SETTINGS
@@ -69,5 +69,6 @@ async def init_data():
 
 def register_exceptions(app: FastAPI):
     app.add_exception_handler(DoesNotExist, exception_404_handler)
-    #自定义
+    # 自定义
     app.add_exception_handler(HTTPException, exception_custom_handler)
+    app.add_exception_handler(Exception, exception_system_handler)

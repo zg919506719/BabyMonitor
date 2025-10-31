@@ -48,6 +48,7 @@ http://127.0.0.1:8000/openapi.json
 ```
 
 # poetry
+
 ```
 uv pip install poetry
 
@@ -58,6 +59,7 @@ poetry install
 ```
 
 # docker
+
 ```
 # 启动服务
 docker-compose up
@@ -67,6 +69,12 @@ docker-compose up -d
 
 # 更新代码后重启
 docker-compose restart
+
+# 进入容器
+docker-compose exec backend bash
+
+#有新的libs
+使用 --build 参数：docker-compose up --build
 ```
 
 

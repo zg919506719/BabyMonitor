@@ -27,8 +27,10 @@ dependencies = [
     "loguru",
     #密码hash
     "passlib",
-    #加密算法
+    #加密算法 密码md5
     "argon2-cffi (>=25.1.0,<26.0.0)",
+    # jwt
+    "pyjwt",
     "redis (>=7.0.1,<8.0.0)",
     "aioredis (>=2.0.1,<3.0.0)"
 ]
