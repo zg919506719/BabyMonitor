@@ -75,6 +75,11 @@ docker-compose exec backend bash
 
 #有新的libs
 使用 --build 参数：docker-compose up --build
+
+#前端
+docker-compose up -d --build front
+# 更彻底
+docker-compose build --no-cache front
 ```
 
 

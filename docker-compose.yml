@@ -59,9 +59,9 @@ services:
     volumes:
       - ./front:/front  # 挂载源代码，实现热重载
       - /front/node_modules
-    restart: unless-stopped
+#    restart: unless-stopped
     command: npm run dev  # 直接运行开发服务器
-
+#    command: sleep infinity
   nginx:
     image: nginx
     ports:
