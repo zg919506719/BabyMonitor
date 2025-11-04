@@ -23,8 +23,8 @@ def create_app() -> FastAPI:
         title=SETTINGS.APP_NAME,
         description=SETTINGS.APP_DESCRIPTION,
         version=SETTINGS.VERSION,
-        docs_url="/",
-        openapi_url="/openapi.json",
+        docs_url="/api/docs",
+        openapi_url="/api/openapi.json",
         middleware=create_middleware(),
         lifespan=lifespan,
     )

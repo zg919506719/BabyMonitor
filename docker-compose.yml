@@ -18,7 +18,7 @@ services:
 
   backend:
     build:
-      context: .
+      context: ./backend
       dockerfile: Dockerfile
     container_name: backend
     #    restart: unless-stopped
@@ -41,13 +41,26 @@ services:
     ports:
       - "8000:8000"
     healthcheck:
-      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
-      interval: 3s
-      timeout: 3s
+      test: [ "CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')" ]
+      interval: 30000s
+      timeout: 30s
       retries: 3
-#      start_period: 5s  # 给应用启动时间
+      #      start_period: 5s  # 给应用启动时间
       # 先启动再进入改
   #    command: sleep infinity
+
+  front:
+    build:
+      context: ./front
+      dockerfile: Dockerfile  # 开发环境Dockerfile
+    container_name: front
+    ports:
+      - "5173:5173"  # 暴露Vite开发服务器端口
+    volumes:
+      - ./front:/front  # 挂载源代码，实现热重载
+      - /front/node_modules
+    restart: unless-stopped
+    command: npm run dev  # 直接运行开发服务器
 
   nginx:
     image: nginx
@@ -58,8 +71,8 @@ services:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./logs/nginx:/var/log/nginx
     depends_on:
-      backend:
-        condition: service_healthy
+      - front
+      - backend
 
 volumes:
   db_data:
