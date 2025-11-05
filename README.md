@@ -71,7 +71,7 @@ docker-compose up -d
 docker-compose restart
 
 # 进入容器
-docker-compose exec backend bash
+docker-compose exec backend sh
 
 #有新的libs
 使用 --build 参数：docker-compose up --build

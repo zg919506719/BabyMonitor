@@ -14,7 +14,39 @@ const routes:RouteRecordRaw[] = [
     {
         path: '/dashboard',
         name: 'Dashboard',
-        component: () => import('../views/Dashboard.vue')
+        component: () => import('../views/DashBoard.vue'),
+        children: [
+            {
+                path: "",
+                name: "default",
+                component: () => import("../views/Statistic.vue"),
+            },
+            {
+                path: "user",
+                name: "user",
+                component: () => import("../views/Users.vue"),
+            },
+            {
+                path: "device",
+                name: "Device",
+                component: () => import("../views/Device.vue"),
+            },
+            {
+                path: "order",
+                name: "Order",
+                component: () => import("../views/Order.vue"),
+            },
+            {
+                path: "behavior",
+                name: "UserBehavior",
+                component: () => import("../views/UserBehavior.vue"),
+            },
+
+            {
+                path: "setting",
+                name: "setting",
+                component: () => import("../views/Setting.vue"),
+            },]
     },
     // 404页面
     {
