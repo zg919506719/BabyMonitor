@@ -15,7 +15,7 @@ class AuthRepository(
 ) {
     
     suspend fun register(request: RegisterRequest): Result<AuthResponse> {
-        return try {····
+        return try {
             val response = apiService.register(request)
             if (response.isSuccessful) {
                 val authResponse = response.body()!!
