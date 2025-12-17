@@ -1,20 +1,22 @@
 package com.babymonitor.ui
 
 import android.Manifest
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
-import androidx.lifecycle.ViewModel
 import com.babymonitor.base.BaseMvvmActivity
 import com.babymonitor.data.local.preferences.UserPreferences
 import com.babymonitor.data.repository.AuthRepository
 import com.babymonitor.databinding.ActivityMainBinding
+import comp3200.UI.MainActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
-class MainActivity : BaseMvvmActivity<ViewModel, ActivityMainBinding>() {
+class MainActivity : BaseMvvmActivity<ActivityMainBinding>() {
 
     private lateinit var authRepository: AuthRepository
     private lateinit var userPreferences: UserPreferences
@@ -71,6 +73,9 @@ class MainActivity : BaseMvvmActivity<ViewModel, ActivityMainBinding>() {
            binding.btnLogin.setOnClickListener {
                startActivity(Intent(this, LoginActivity::class.java))
            }*/
+        binding.btnSettings.setOnClickListener {
+            startActivity(Intent(this, MainActivity::class.java))
+        }
     }
 
     private fun checkPermissions() {

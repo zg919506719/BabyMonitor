@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <!-- 权限声明 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -16,7 +18,45 @@
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.USE_FINGERPRINT" />
     <uses-permission android:name="android.permission.USE_BIOMETRIC" />
-    
+
+
+    <!-- ========== Android 12+ (API 31+) 需要的权限 ========== -->
+    <!-- 必须的蓝牙权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_CONNECT" />
+    <uses-permission android:name="android.permission.BLUETOOTH_SCAN" />
+
+    <!-- 可选，如果需要作为外设广播 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADVERTISE"
+        tools:targetApi="s" />
+
+    <!-- ========== Android 11 及以下需要的权限 ========== -->
+    <!-- 老版本蓝牙权限（自动合并到新权限） -->
+    <uses-permission android:name="android.permission.BLUETOOTH"
+        android:maxSdkVersion="30" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN"
+        android:maxSdkVersion="30" />
+
+    <!-- ========== 其他必要权限 ========== -->
+    <!-- Android 6.0+ 需要位置权限来扫描蓝牙设备 -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
+    <!-- Android 10+ 需要前台服务权限 -->
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"
+        tools:targetApi="q" />
+
+    <!-- Android 9+ 需要网络权限（某些设备需要） -->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!-- ========== 功能声明 ========== -->
+    <!-- 声明使用蓝牙功能 -->
+    <uses-feature android:name="android.hardware.bluetooth" android:required="true" />
+
+    <!-- 声明使用蓝牙 LE 功能（可选） -->
+    <uses-feature android:name="android.hardware.bluetooth_le" android:required="false" />
+
+    <!-- ========== SDK 版本设置 ========== -->
+
     <!-- 摄像头功能声明 -->
     <uses-feature
         android:name="android.hardware.camera"
@@ -46,44 +86,37 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
- <!--       <activity
-            android:name=".ui.auth.LoginActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.BabyMonitor" />
-            
+
         <activity
-            android:name=".ui.camera.CameraActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.BabyMonitor" />
-            
+            android:name="comp3200.UI.MainActivity"
+            android:exported="true"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.COMP3200">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
         <activity
-            android:name=".ui.viewer.ViewerActivity"
-            android:exported="false"
-            android:screenOrientation="portrait"
-            android:theme="@style/Theme.BabyMonitor" />
-            
+            android:name="comp3200.UI.BluetoothMenu"
+            android:label="COMP3200">
+        </activity>
         <activity
-            android:name=".ui.settings.SettingsActivity"
-            android:exported="false"
-            android:parentActivityName=".ui.MainActivity" />
-            
-        &lt;!&ndash; 摄像头服务 &ndash;&gt;
-        <service
-            android:name=".service.CameraService"
-            android:enabled="true"
-            android:exported="false"
-            android:foregroundServiceType="camera" />
-            
-        &lt;!&ndash; 音频服务 &ndash;&gt;
-        <service
-            android:name=".service.AudioService"
-            android:enabled="true"
-            android:exported="false"
-            android:foregroundServiceType="microphone" />
-            -->
+            android:name="comp3200.UI.GamepadScreen"
+            android:label="COMP3200">
+        </activity>
+        <activity
+            android:name="comp3200.UI.MouseScreen"
+            android:label="COMP3200">
+        </activity>
+        <activity
+            android:name="comp3200.UI.WheelScreen"
+            android:label="COMP3200">
+        </activity>
+        <activity
+            android:name="comp3200.UI.DIGamepadScreen"
+            android:label="COMP3200">
+        </activity>
     </application>
 
 </manifest>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#000000">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etInputCount"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="number"
+        android:hint="输入挑战次数"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/etInputTime"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etInputCount"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:inputType="number"
+        android:hint="输入间隔时间"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnStart"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/etInputTime"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:inputType="number"
+        android:text="开始"/>
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/left_mouse_button"
+        android:keepScreenOn="true"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        app:layout_constraintStart_toStartOf="@+id/touchpad"
+        app:layout_constraintTop_toBottomOf="@+id/touchpad"
+        android:background="@drawable/trackpad"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/right_mouse_button"
+        android:layout_width="150dp"
+        android:layout_height="50dp"
+        app:layout_constraintEnd_toEndOf="@+id/touchpad"
+        app:layout_constraintTop_toBottomOf="@+id/touchpad"
+        android:background="@drawable/trackpad"/>
+
+    <comp3200.UI.Components.Touchpad
+        android:id="@+id/touchpad"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:background="@drawable/trackpad"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <comp3200.UI.Components.ConnectionView
+        android:id="@+id/mouse_connection"
+        android:layout_width="409dp"
+        android:layout_height="294dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

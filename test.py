@@ -34,7 +34,8 @@ def random_click():
     # 等待随机时间 这个副本的时间
 
     time.sleep(wait_time+30)
-
+    print(f"战斗结束点击，${datetime.now()}")
+    pyautogui.click()
     #第二次点击时间
     wait_second_time = random.uniform(1, 5)
     time.sleep(wait_second_time+5)
